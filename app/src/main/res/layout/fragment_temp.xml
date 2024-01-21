@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/red"
+    tools:context=".Fragment_temp">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/LcTemperature"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.github.mikephil.charting.charts.LineChart>
+
+
+    <TextView
+        android:id="@+id/TvTemperature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:text="Temperature"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
+
+
+    <!--        android:layout_centerInParent="true"/>-->
+
+
+</RelativeLayout>
