@@ -12,7 +12,7 @@ Follow the steps below to set up the project:
 
 3. **Download OpenCV 4.6.0 for Android**: Download the OpenCV 4.6.0 library for Android from the official OpenCV website [ OpenCV_release ](https://opencv.org/releases/).
 
-4. **Clone this git and Add OpenCV Dependency**: Add the OpenCV dependency to your Android project [Reference](https://youtu.be/bR7lL886-uc?si=be9SiwEaWzrY5g5j) and start building it using KTS Gradle.
+4. **Clone this git and Add OpenCV Dependency**: Add the OpenCV dependency to your Android project [(reference)](https://youtu.be/bR7lL886-uc?si=be9SiwEaWzrY5g5j) and start building it using KTS Gradle.
 
 5. **Install and Enjoy**: Install the Android app on your device and use it to control the SMD hotplate.
 
