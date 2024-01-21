@@ -10,7 +10,7 @@ Follow the steps below to set up the project:
 
 2. **MQTT Server**: Create a new account at [CloudAMQP](https://www.cloudamqp.com/) and choose the free plan "Little Lemur" to start your own MQTT server.
 
-3. **Download OpenCV 4.6.0 for Android**: Download the OpenCV 4.6.0 library for Android from the official OpenCV website.
+3. **Download OpenCV 4.6.0 for Android**: Download the OpenCV 4.6.0 library for Android from the official OpenCV website[OpenCV_release](https://opencv.org/releases/).
 
 4. **Clone this git and Add OpenCV Dependency**: Add the OpenCV dependency to your Android project and start building it using KTS Gradle.
 
