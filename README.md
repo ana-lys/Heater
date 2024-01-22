@@ -6,7 +6,7 @@ This repository contains the code and resources for controlling a Surface Mount 
 
 Follow the steps below to set up the project:
 
-1. **HotPlate ESP32 Schematic, PCB, and Code**: Find the schematic, PCB design, and code for the HotPlate in the following link: [Proteus & Arduino code](PCB).
+1. **HotPlate ESP32 Schematic, PCB, and Code**: Schematic, PCB design, and code for the HotPlate in the PCB folder: [Proteus & Arduino code](PCB).
 
 2. **MQTT Server**: Create a new account at [CloudAMQP](https://www.cloudamqp.com/) and choose the free plan "Little Lemur" to start your own MQTT server.
 
