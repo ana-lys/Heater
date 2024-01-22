@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 public class ItemViewModel extends ViewModel {
     private final MutableLiveData<String> LiveActuator = new MutableLiveData<String>();
     private final MutableLiveData<String> LiveTemperature = new MutableLiveData<String>();
+    private final MutableLiveData<String> LiveVideoPath = new MutableLiveData<String>();
 
     void setLiveActuator(String ActuatorData){
         LiveActuator.setValue(ActuatorData);
@@ -14,11 +15,18 @@ public class ItemViewModel extends ViewModel {
     void setLiveTemperature(String TemperatureData){
         LiveTemperature.setValue(TemperatureData);
     }
+
+    void setVideoHistory (String VideoPath) { LiveVideoPath.setValue(VideoPath);};
+
     public LiveData<String> getLiveActuator(){
         return LiveActuator;
     }
 
     public  LiveData<String> getLiveTemperature(){
         return LiveTemperature;
+    }
+
+    public  LiveData<String> getLiveVideoPath(){
+        return LiveVideoPath;
     }
 }

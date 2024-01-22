@@ -26,7 +26,9 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.graphics.BitmapFactory;
@@ -91,11 +93,10 @@ public class MainActivity extends AppCompatActivity {
     TextView hello, result;
 
     private static final String TAG = "AndroidCameraApi";
-    private Button btnTake;
-    private Button btnGallery;
-    private TextureView textureView;
 
-    private ImageView imageView;
+
+    private Switch switchWidget;
+
 
     private static final long DELAY_MILLIS = 200; // 1 second
     private Handler handler;
@@ -136,14 +137,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         hello = findViewById(R.id.TvHello);
+        hello.setText(" ");
         result = findViewById(R.id.TvResult);
+        result.setText(" ");
         if (OpenCVLoader.initDebug()) {
 
         } else {
 
         }
-        if (textureView != null)
-            textureView.setSurfaceTextureListener(textureListener);
+        switchWidget = findViewById(R.id.switch1);
 
         MqClientID = MqttClient.generateClientId();
         MqClient = new MqttAndroidClient(this.getApplicationContext(), MqHost, MqClientID);
@@ -169,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                             // Handle an incoming message. Convert the byte array to a string and display it.
                             String payload = new String(message.getPayload());
                             VmActuator.setLiveTemperature(payload);
-                            hello.setText(payload);
+//                            hello.setText(payload);
                         }
 
                         @Override
@@ -200,17 +202,34 @@ public class MainActivity extends AppCompatActivity {
         } catch (MqttException e) {
             e.printStackTrace();
         }
-
         replaceFragment(new Fragment_temp(), R.id.frame_layout);
         replaceFragment(new Fragment_actuator(), R.id.frame_layout2);
         replaceFragment(new Fragment_camera(), R.id.frame_layout3);
+        switchWidget.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // Perform actions based on the switch state
+                if (isChecked) {
+                    replaceFragment(new Fragment_history(), R.id.frame_layout2);
+                    replaceFragment(new Fragment_preview(), R.id.frame_layout3);
+                } else {
+                    replaceFragment(new Fragment_actuator(), R.id.frame_layout2);
+                    replaceFragment(new Fragment_camera(), R.id.frame_layout3);
+                }
+            }
+        });
+
+
+
         VmActuator = new ViewModelProvider(this).get(ItemViewModel.class);
         VmActuator.getLiveActuator().observe(this, item -> {
             result.setText(item);
-            Log.d("observer", "NotFail ");
             if (MqStatus) {
                 publishMessage(item, "/start", 1, MqClient);
             }
+        });
+        VmActuator.getLiveVideoPath().observe(this, item -> {
+//            result.setText(item);
         });
 
     }
